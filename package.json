@@ -1,0 +1,28 @@
+{
+  "name": "net-runner",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "knex": "^0.10.0",
+    "sqlite3": "^3.1.1",
+    "express": "^4.13.4",
+    "mysql": "^2.10.2",
+    "bookshelf": "^0.9.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/foxguy75/NetRunner.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/foxguy75/NetRunner/issues"
+  },
+  "homepage": "https://github.com/foxguy75/NetRunner#readme"
+}
