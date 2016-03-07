@@ -2,7 +2,7 @@
   "name": "net-runner",
   "version": "1.0.0",
   "description": "",
-  "main": "content/index.js",
+  "main": "index.js",
   "dependencies": {
     "bcrypt": "^0.8.5",
     "body-parser": "^1.15.0",
