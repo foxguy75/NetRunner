@@ -4,6 +4,8 @@ var express    = require("express")
   , morgan     = require("morgan")
   , routes     = require("./routes");
 
+app.set("port", (process.env.PORT || 8000));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(morgan("short"));
@@ -15,4 +17,6 @@ app.get('/', function (req, res) {
  res.end('hello world!');
 });
 
-module.exports = app;
+app.listen(app.get("port"), function () {
+  console.log("NetRunner application running.");
+});
