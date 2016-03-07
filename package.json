@@ -2,7 +2,7 @@
   "name": "net-runner",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "content/index.js",
   "dependencies": {
     "bcrypt": "^0.8.5",
     "body-parser": "^1.15.0",
@@ -21,6 +21,7 @@
     "grunt-cli": "^0.1.13"
   },
   "scripts": {
+    "start": "node content/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
