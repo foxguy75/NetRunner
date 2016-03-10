@@ -10,6 +10,9 @@ exports.up = function(knex, Promise) {
         .unique()
         .index();
       table.timestamps();
+      table.string("first_name");
+      table.string("last_name");
+      table.string("gravatar_url");
       table.string("hash").notNullable();
       table.string("email")
         .notNullable()
@@ -23,8 +26,7 @@ exports.up = function(knex, Promise) {
       table.string("description").nullable();
       table.integer("user_id")
         .notNullable()
-        .references("id")
-        .inTable("users")
+        .references("users.id")
         .onDelete("CASCADE");
       table.string("identity").notNullable();
       table.integer("cards_min");
@@ -58,13 +60,11 @@ exports.up = function(knex, Promise) {
     knex.schema.createTable("decks_cards", function(table) {
       table.integer("deck_id")
         .notNullable()
-        .references("id")
-        .inTable("decks")
+        .references("decks.id")
         .onDelete("CASCADE");
       table.integer("card_id")
         .notNullable()
-        .references("id")
-        .inTable("cards")
+        .references("cards.id")
         .onDelete("CASCADE");
       table.primary(["deck_id", "card_id"]);
     })

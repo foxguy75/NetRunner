@@ -2,8 +2,7 @@ var express    = require("express")
   , app        = express()
   , bodyParser = require("body-parser")
   , morgan     = require("morgan")
-  , routes     = require("./routes")
-  , db         = require('./db');
+  , routes     = require("./routes");
 
 app.set("port", (process.env.PORT || 8000));
 
