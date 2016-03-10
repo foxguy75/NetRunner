@@ -37,7 +37,7 @@ User = bookshelf.Model.extend({
   },
   validateCredentials: function (username, password) {
     // TODO:
-  }
+  },
   changePassword: function () {
     // TODO:
   },
