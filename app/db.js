@@ -11,5 +11,5 @@ knex.migrate.latest([config]);
 
 module.exports = {
   knex: knex,
-  bookshelf: bookshelf
+  Bookshelf: bookshelf
 };
