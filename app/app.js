@@ -3,7 +3,7 @@ var express    = require("express")
   , bodyParser = require("body-parser")
   , morgan     = require("morgan")
   , routes     = require("./routes")
-  , config     = require("./config")[(process.env.NODE_ENV || "development")];
+  , db         = require('./db');
 
 app.set("port", (process.env.PORT || 8000));
 
