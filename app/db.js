@@ -1,15 +1,16 @@
 var config    = require("../knexfile.js")
   , env       = "development"
   , knex      = require("knex")(config[env])
-  , bookshelf = require("bookshelf")(knex);
+  , Bookshelf = require("bookshelf")(knex);
 
 // activate virtuals plugin
-bookshelf.plugin("virtuals");
+Bookshelf.plugin("virtuals");
 
 // ensure that the schema of database is always current
 knex.migrate.latest([config]);
+console.log(knex.migrate.currenVersion);
 
 module.exports = {
   knex: knex,
-  Bookshelf: bookshelf
+  Bookshelf: Bookshelf
 };
