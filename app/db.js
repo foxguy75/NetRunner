@@ -8,7 +8,6 @@ Bookshelf.plugin("virtuals");
 
 // ensure that the schema of database is always current
 knex.migrate.latest([config]);
-console.log(knex.migrate.currenVersion);
 
 module.exports = {
   knex: knex,
