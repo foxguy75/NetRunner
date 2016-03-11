@@ -13,11 +13,14 @@ exports.up = function(knex, Promise) {
       table.string("first_name");
       table.string("last_name");
       table.string("gravatar_url", 2083);
-      table.binary("hash", 60).notNullable();
+      table.char("hash", 60).notNullable();
       table.string("email")
         .unique()
         .notNullable();
-      table.timestamps();
+      table.timestamp("created_at")
+        .defaultTo(knex.fn.now())
+      table.timestamp("updated_at")
+        .defaultTo(knex.fn.now());
     }),
     knex.schema.createTable("decks", function (table) {
       table.increments("id")
@@ -36,14 +39,19 @@ exports.up = function(knex, Promise) {
       table.integer("influence_max");
       table.integer("agenda_points_min")
       table.string("image_src", 2083).nullable();
-      table.timestamps();
+      table.timestamp("created_at")
+        .defaultTo(knex.fn.now())
+      table.timestamp("updated_at")
+        .defaultTo(knex.fn.now());
     }),
     knex.schema.createTable("cards", function (table) {
       table.increments("id")
         .unsigned()
         .primary()
         .notNullable();
-      table.string("title").notNullable();
+      table.string("title")
+        .unique()
+        .notNullable();
       table.string("type").notNullable();
       table.string("sub_type").notNullable();
       table.integer("cost");
@@ -51,14 +59,19 @@ exports.up = function(knex, Promise) {
       table.integer("influence");
       table.string("text").notNullable();
       table.string("set").notNullable();
-      table.integer("number").notNullable();
+      table.integer("number")
+        .unique()
+        .notNullable();
       table.string("illustrator").notNullable();
       table.integer("agenda_points");
       table.integer("strength");
       table.integer("tr")
       table.integer("mu")
       table.string("image_src", 2083);
-      table.timestamps();
+      table.timestamp("created_at")
+        .defaultTo(knex.fn.now());
+      table.timestamp("updated_at")
+        .defaultTo(knex.fn.now());
     }),
     knex.schema.createTable("decks_cards", function(table) {
       table.integer("deck_id")
