@@ -11,15 +11,10 @@ function knexInsertCards(knex) {
       });
       res.on('end', function() {
         body = JSON.parse(body);
-        for (var i = 0, n = body.length; i < n; i++) {
-          delete body[i]["last-modified"];
-        }
-        resolve(knex.batchInsert('cards', body, 100));
       });
     });
-  })
+  });
 }
-
 
 exports.seed = function(knex, Promise) {
   return Promise.join(
@@ -40,6 +35,5 @@ exports.seed = function(knex, Promise) {
     }),
     
     // insert seed cards entries
-    knexInsertCards(knex)
   );
 };
