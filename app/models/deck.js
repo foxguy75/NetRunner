@@ -1,7 +1,7 @@
 var Bookshelf = require("../db").Bookshelf;
 
 var Deck = Bookshelf.Model.extend({
-  tablename: "decks",
+  tableName: "decks",
   user_id: function () {
     return this.belongsTo("User");
   }

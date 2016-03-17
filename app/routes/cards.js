@@ -1,28 +1,56 @@
 var express = require("express")
   , router  = express.Router()
-  , Card    = require("../models/card");
+  , db      = require("../models/card")
+  , Card    = db.Card
+  , Cards   = db.Cards;
 
-// user list
 router.route("/cards")
   .get(function (req, res) {
-    // TODO:
-    res.json({"status": 200, "message": "", "data": {}});
+    Cards.forge().fetch()
+      .then(function (cards) {
+        res.status(200).json(cards.toJSON());
+      })
+      .catch(function (err) {
+        console.error(err);
+        res.status(500).json();
+      });
   })
   .post(function (req, res) {
-    // TODO:
+    new Card().save(req.body.json)
+      .then(function (card) {
+        // TODO:
+      });
   });
 
-// user
-router.route("/cards/:id")
+router.route("/cards/:code")
   .get(function (req, res) {
-    // TODO:
-    res.json({"status": 200, "message": "", "data": {"id": req.params.id}});
+    Cards.forge().fetchOne({where: {code: req.params.code}})
+      .then(function (card) {
+        if (card) {
+          res.status(200).json(card.toJSON())
+        } else {
+          res.status(404).json();
+        }
+      })
+      .catch(function (err) {
+        console.log(err);
+        res.status(500).json();
+      });
   })
   .put(function (req, res) {
     // TODO:
   })
   .delete(function (req, res) {
-    // TODO:
+    Cards.forge().fetchOne({where: {code: req.params.code}})
+      .then(function (card) {
+        if (card) {
+          card.destroy().then(function () {
+            res.status(202).json()
+          });
+        } else {
+          res.status(404).json();
+        }
+      });
   });
 
 module.exports = router;

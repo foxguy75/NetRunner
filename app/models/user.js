@@ -17,7 +17,7 @@ function hashPassword(password) {
 }
 
 var User = Bookshelf.Model.extend({
-  tablename: "users",
+  tableName: "users",
   initialize: function () {
     this.on("creating", function (model, attrs, options) {
       return new Promise(function (resolve, reject) {

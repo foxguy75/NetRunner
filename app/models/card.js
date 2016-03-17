@@ -1,7 +1,7 @@
 var Bookshelf = require("../db").Bookshelf;
 
 var Card = Bookshelf.Model.extend({
-  tablename: "cards"
+  tableName: "cards"
 });
 
 var Cards = Bookshelf.Collection.extend({
