@@ -1,9 +1,9 @@
 var statusReasons = require("../utils").statusReasons;
 
-function response(status, message, data) {
+function response(status, data) {
   return {
     status: status, 
-    message: (statusReasons[status] || message), 
+    message: statusReasons[status], 
     data: (data || void 0)
   };
 }
@@ -13,7 +13,7 @@ function middleware() {
     var json = res.json;
     
     res.json = function (object) {
-      json.call(this, response(this.statusCode, null, object));
+      json.call(this, response(this.statusCode, object));
     }
     
     next();
