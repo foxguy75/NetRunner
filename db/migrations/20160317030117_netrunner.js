@@ -36,7 +36,11 @@ exports.up = function(knex, Promise) {
       table.string("text")
         .notNullable();
       table.integer("cost");
+      table.string("core");
       table.integer("baselink");
+      table.integer("strength");
+      table.integer("advancementcost");
+      table.integer("agendapoints")
       table.string("faction")
         .notNullable();
       table.string("faction_code")
@@ -52,7 +56,6 @@ exports.up = function(knex, Promise) {
       table.integer("number")
         .notNullable();
       table.integer("quantity")
-        .notNullable();
       table.string("setname")
         .notNullable();
       table.string("set_code")

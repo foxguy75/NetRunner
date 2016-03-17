@@ -10,7 +10,7 @@ app.set("port", (process.env.PORT || 8000));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(morgan("short"));
-app.use(middleware.response());
+app.use("/api", middleware.response());
 app.use("/api", routes.users);
 app.use("/api", routes.cards);
 app.use("/api", routes.decks);
