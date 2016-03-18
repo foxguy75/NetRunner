@@ -6,7 +6,7 @@ var express = require("express")
 router.route("/users")
   .get(function (req, res) {
     // TODO:
-    res.json({"status": 200, "message": "", "data": {}});
+    res.status(200).json();
   })
   .post(function (req, res) {
     // TODO:
@@ -16,7 +16,7 @@ router.route("/users")
 router.route("/users/:id")
   .get(function (req, res) {
     // TODO:
-    res.json({"status": 200, "message": "", "data": {"id": req.params.id}});
+    res.status(200).json();
   })
   .put(function (req, res) {
     // TODO:

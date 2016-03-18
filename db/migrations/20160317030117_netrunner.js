@@ -21,57 +21,37 @@ exports.up = function(knex, Promise) {
     
     knex.schema.createTable("cards", function (table) {
       table.string("code")
-        .primary()
-        .notNullable();
-      table.string("title")
-        .notNullable();
-      table.string("type")
-        .notNullable();
-      table.string("type_code")
-        .notNullable();
-      table.string("subtype")
-        .notNullable();
-      table.string("subtype_code")
-        .notNullable();
-      table.string("text")
-        .notNullable();
+        .primary();
+      table.string("title");
+      table.string("type");
+      table.string("type_code");
+      table.string("subtype");
+      table.string("subtype_code");
+      table.string("text");
       table.integer("cost");
       table.string("core");
       table.integer("baselink");
       table.integer("strength");
       table.integer("advancementcost");
-      table.integer("agendapoints")
-      table.string("faction")
-        .notNullable();
-      table.string("faction_code")
-        .notNullable();
-      table.string("faction_letter")
-        .notNullable();
+      table.integer("agendapoints");
+      table.string("faction");
+      table.string("faction_code");
+      table.string("faction_letter");
       table.integer("factioncost");
       table.string("flavor");
-      table.string("illustrator")
-        .notNullable();
+      table.string("illustrator");
       table.integer("influencelimit");
       table.integer("minimumdecksize");
-      table.integer("number")
-        .notNullable();
-      table.integer("quantity")
-      table.string("setname")
-        .notNullable();
-      table.string("set_code")
-        .notNullable();
-      table.string("side")
-        .notNullable();
-      table.string("side_code")
-        .notNullable();
-      table.boolean("uniqueness")
-        .notNullable();
-      table.integer("limited")
-        .notNullable();
-      table.string("cycle_code")
-        .notNullable();
-      table.integer("cyclenumber")
-        .notNullable();
+      table.integer("number");
+      table.integer("quantity");
+      table.string("setname");
+      table.string("set_code");
+      table.string("side");
+      table.string("side_code");
+      table.boolean("uniqueness");
+      table.integer("limited");
+      table.string("cycle_code");
+      table.integer("cyclenumber");
       table.string("ancurLink");
       table.string("url");
       table.string("imagesrc");

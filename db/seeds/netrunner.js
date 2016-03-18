@@ -1,18 +1,35 @@
 var http    = require("http")
   , Promise = require("bluebird")
   , httpGet = Promise.promisify(http.get);
-
-function knexInsertCards(knex) {
-  return new Promise(function(resolve, reject) {
+  
+function requestCards() {
+  return new Promise(function (reject, resolve) {
     http.get("http://netrunnerdb.com/api/cards/", function (res) {
       var body = "";
-      res.on('data', function(chunk) {
+      res.on("data", function(chunk) {
         body += chunk;
       });
-      res.on('end', function() {
+      res.on("error", function (err) {
+        reject(err);
+      });
+      res.on("end", function() {
         body = JSON.parse(body);
+        console.log("body_length", body.length);
+        body.map(function (card) {
+          if (card["last-modified"]) {
+            delete card["last-modified"];
+          }
+          return card;
+        });
+        resolve(body);
       });
     });
+  });
+}
+
+function insertCards(knex) {
+  return requestCards().then(function (cards) {
+    return knex.batchInsert("cards", cards, 50);
   });
 }
 
@@ -35,5 +52,6 @@ exports.seed = function(knex, Promise) {
     }),
     
     // insert seed cards entries
+    insertCards(knex)
   );
 };
