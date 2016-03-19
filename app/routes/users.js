@@ -4,7 +4,6 @@ var express = require("express")
   , User  = db.User
   , Users = db.Users;
 
-// user list
 router.route("/users")
   .get(function (req, res) {
     Users.forge().fetch()
@@ -20,21 +19,20 @@ router.route("/users")
     // TODO:
   });
 
-// user
-router.route("/user/:id")
+router.route("/users/:id")
   .get(function (req, res) {
-    Users.forge().fetchOne({where: {id: req.params.id}})
-    .then(function (user) {
-      if (user) {
-        res.status(200).json(user.toJSON());
-      } else {
-        res.status(404).json();
-      }
-    })
-    .catch(function (err) {
-      console.log(err);
-      res.status(500).json();
-    });
+    User.where({id: parseInt(req.params.id)}).fetch()
+      .then(function (user) {
+        if (user) {
+          res.status(200).json(user.toJSON());
+        } else {
+          res.status(404).json();
+        }
+      })
+      .catch(function (err) {
+        console.log(err);
+        res.status(500).json();
+      });
   })
   .put(function (req, res) {
     // TODO:

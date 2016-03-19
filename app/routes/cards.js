@@ -14,17 +14,11 @@ router.route("/cards")
         console.error(err);
         res.status(500).json();
       });
-  })
-  .post(function (req, res) {
-    new Card().save(req.body.json)
-      .then(function (card) {
-        // TODO:
-      });
   });
 
 router.route("/cards/:code")
   .get(function (req, res) {
-    Cards.forge().fetchOne({where: {code: req.params.code}})
+    Card.where({code: req.params.code}).fetch()
       .then(function (card) {
         if (card) {
           res.status(200).json(card.toJSON())
@@ -33,23 +27,8 @@ router.route("/cards/:code")
         }
       })
       .catch(function (err) {
-        console.log(err);
+        console.error(err);
         res.status(500).json();
-      });
-  })
-  .put(function (req, res) {
-    // TODO:
-  })
-  .delete(function (req, res) {
-    Cards.forge().fetchOne({where: {code: req.params.code}})
-      .then(function (card) {
-        if (card) {
-          card.destroy().then(function () {
-            res.status(202).json()
-          });
-        } else {
-          res.status(404).json();
-        }
       });
   });
 
