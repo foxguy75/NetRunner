@@ -28,18 +28,17 @@ exports.up = function(knex, Promise) {
       table.string("subtype");
       table.string("subtype_code");
       table.string("text");
-      table.integer("cost");
-      table.string("core");
-      table.integer("baselink");
-      table.integer("strength");
       table.integer("advancementcost");
       table.integer("agendapoints");
+      table.integer("baselink");
+      table.integer("cost");
       table.string("faction");
       table.string("faction_code");
-      table.string("faction_letter");
+      table.string("faction_letter");   
       table.integer("factioncost");
       table.string("flavor");
       table.string("illustrator");
+      table.integer("memoryunits");
       table.integer("influencelimit");
       table.integer("minimumdecksize");
       table.integer("number");
@@ -48,13 +47,15 @@ exports.up = function(knex, Promise) {
       table.string("set_code");
       table.string("side");
       table.string("side_code");
+      table.integer("trash");
+      table.integer("strength");
       table.boolean("uniqueness");
       table.integer("limited");
       table.string("cycle_code");
       table.integer("cyclenumber");
       table.string("ancurLink");
       table.string("url");
-      table.string("imagesrc");
+      table.string("imagesrc", 2083);
       table.timestamp("created_at")
         .defaultTo(knex.fn.now());
       table.timestamp("updated_at")
